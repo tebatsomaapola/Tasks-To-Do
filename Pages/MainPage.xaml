@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XamarinForms"
+             x:Class="XamarinForms.MainPage"
+             Title="Tasks To-Do">
+      
+      
+     <ContentPage.Resources>
+     <ResourceDictionary>
+        <local:DueDateColorConverter x:Key="DueDateColorConverter"/>
+     </ResourceDictionary>
+     </ContentPage.Resources>
+
+    
+    <StackLayout Padding="20">
+        <Label Text="My Tasks" FontSize="24" HorizontalOptions="Center"/>
+ 
+           <StackLayout Orientation="Horizontal" Spacing="10">
+        <!-- Status Filter -->
+        <Picker x:Name="StatusFilter"
+                Title="Filter by Status"
+                WidthRequest="150"
+                SelectedIndexChanged="OnFilterChanged">
+            <Picker.Items>
+                <x:String>All</x:String>
+                <x:String>Pending</x:String>
+                <x:String>In Progress</x:String>
+                <x:String>Complete</x:String>
+            </Picker.Items>
+        </Picker>
+
+        <!-- Month Filter -->
+        <Picker x:Name="MonthFilter"
+                Title="Filter by Month"
+                WidthRequest="150"
+                SelectedIndexChanged="OnFilterChanged"/>
+    </StackLayout>
+        <!-- Task List -->
+        <ListView x:Name="tasksList"
+                  HasUnevenRows="True"
+                  ItemTapped="OnTaskTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10">
+                            <Label Text="{Binding Title}" FontSize="18" FontAttributes="Bold"/>
+                            <Label Text="{Binding Description}" FontSize="14" TextColor="Gray"/>
+                            <Label Text="{Binding DueDate, StringFormat='Due: {0:dd MMM yyyy}'}"
+                             FontSize="12"
+                             TextColor="{Binding DueDate, Converter={StaticResource DueDateColorConverter}}"/>
+
+                            <Label Text="{Binding Status}" FontSize="14" TextColor="Gray"/>
+                            <Label Text="{Binding IsCompleted, StringFormat='Completed: {0}'}"
+                                   FontSize="12" TextColor="Green"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!-- Add Task Button -->
+        <Button Text="Add Task" Clicked="OnAddTaskClicked"/>
+        
+<Button Text="Dashboard"
+        Margin="0,10,0,0"
+        Clicked="OnDashboardClicked"/>
+    </StackLayout>
+</ContentPage>

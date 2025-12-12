@@ -1,0 +1,21 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinForms.EditTaskPage"
+             Title="Edit Task">
+
+    <StackLayout Padding="20" Spacing="15">
+        <Entry x:Name="titleEntry" Text="{Binding Title}" Placeholder="Title"/>
+        <Editor x:Name="descEditor" Text="{Binding Description}" Placeholder="Description"/>
+        <DatePicker x:Name="dueDatePicker" Date="{Binding DueDate}"/>
+        <Picker x:Name="statusPicker" Title="Status">
+            <Picker.Items>
+                <x:String>Pending</x:String>
+                <x:String>Doing</x:String>
+                <x:String>Parked</x:String>
+                <x:String>Complete</x:String>
+            </Picker.Items>
+        </Picker>
+        <Button Text="Cancel" Clicked="OnCancel"/>
+        <Button Text="Save Changes" Clicked="OnSaveClicked"/>
+    </StackLayout>
+</ContentPage>

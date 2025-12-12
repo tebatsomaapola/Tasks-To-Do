@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinForms.DashboardPage"
+             Title="Dashboard">
+
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="20">
+
+            <Label Text="Task Dashboard"
+                   FontSize="28"
+                   HorizontalOptions="Center"
+                   FontAttributes="Bold"/>
+
+            <!-- ✅ FILTERS (now inside main StackLayout) -->
+            <StackLayout Orientation="Horizontal" Spacing="10">
+                <!-- Status Filter -->
+                <Picker x:Name="DashboardStatusFilter"
+                        Title="Status"
+                        WidthRequest="150"
+                        SelectedIndexChanged="OnDashboardFilterChanged">
+                    <Picker.Items>
+                        <x:String>All</x:String>
+                        <x:String>Pending</x:String>
+                        <x:String>In Progress</x:String>
+                        <x:String>Complete</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <!-- Month Filter -->
+                <Picker x:Name="DashboardMonthFilter"
+                        Title="Month"
+                        WidthRequest="150"
+                        SelectedIndexChanged="OnDashboardFilterChanged"/>
+            </StackLayout>
+
+            <!-- ✅ DASHBOARD CARDS -->
+            <Frame BackgroundColor="#eeeeee" CornerRadius="10" Padding="15">
+                <StackLayout>
+                    <Label Text="Total Tasks" FontSize="18" FontAttributes="Bold" TextColor="Gray"/>
+                    <Label x:Name="TotalTasksLabel" FontSize="24" TextColor="#333"/>
+                </StackLayout>
+            </Frame>
+
+            <Frame BackgroundColor="#eeeeee" CornerRadius="10" Padding="15">
+                <StackLayout>
+                    <Label Text="Completed Tasks" FontSize="18" FontAttributes="Bold" TextColor="Gray"/>
+                    <Label x:Name="CompletedTasksLabel" FontSize="24" TextColor="Green"/>
+                </StackLayout>
+            </Frame>
+
+            <Frame BackgroundColor="#eeeeee" CornerRadius="10" Padding="15">
+                <StackLayout>
+                    <Label Text="Overdue Tasks" FontSize="18" FontAttributes="Bold" TextColor="Gray"/>
+                    <Label x:Name="OverdueTasksLabel" FontSize="24" TextColor="Red"/>
+                </StackLayout>
+            </Frame>
+
+            <Frame BackgroundColor="#eeeeee" CornerRadius="10" Padding="15">
+                <StackLayout>
+                    <Label Text="Due This Month" FontSize="18" FontAttributes="Bold" TextColor="Gray"/>
+                    <Label x:Name="ThisMonthTasksLabel" FontSize="24" TextColor="#555"/>
+                </StackLayout>
+            </Frame>
+             <Button Text="Back To Tasks" Clicked="OnCancel"/>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

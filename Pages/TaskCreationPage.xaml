@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+	xmlns:local="clr-namespace:XamarinForms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="XamarinForms.TaskCreationPage"
+	Title="Tasks To-Do">
+	
+	<StackLayout Padding="20">
+        <Label x:Name="taskLabel" Text="Create New Task" FontSize="24" HorizontalOptions="Center"/>
+        <Entry x:Name="titleEntry" Placeholder="Task Title" />
+        <Editor x:Name="descEditor" Placeholder="Description" HeightRequest="80"/>
+        <Picker x:Name="statusPicker" Title="Select Status">
+            <Picker.Items>
+                <x:String>Pending</x:String>
+                <x:String>Doing</x:String>
+                <x:String>Complete</x:String>
+                <x:String>Parked</x:String>
+            </Picker.Items>
+        </Picker>
+        <DatePicker x:Name="dueDatePicker" />
+        <Button Text="Cancel" Clicked="OnCancel"/>
+        <Button Text="Save Task" Clicked="OnSaveClicked" />
+    </StackLayout>	
+        
+</ContentPage>
